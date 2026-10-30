@@ -7,7 +7,7 @@ gpu_backend = "d3d12"
 log_level = "info"
 log_file = "FNCReborn.log"
 
-# Frame rate cap: 30 (original), 60, 120 or 144.
+# Frame rate cap: 30 (original), 60, 120, 144, 165, 180 or 240.
 fnc_frame_rate = 60
 vsync = false
 fullscreen = true          # F11 switches between fullscreen and window

@@ -27,7 +27,9 @@ const TAB_NAME: &str = "DISPLAY";
 const ROWS: &[(&str, &[&str])] = &[
     (
         "FRAME RATE (RESTART)",
-        &["30 FPS", "60 FPS", "120 FPS", "144 FPS"],
+        &[
+            "30 FPS", "60 FPS", "120 FPS", "144 FPS", "165 FPS", "180 FPS", "240 FPS",
+        ],
     ),
     ("VSYNC", &["OFF", "ON"]),
     ("RESOLUTION SCALE (RESTART)", &["1X", "2X", "3X"]),
@@ -714,10 +716,15 @@ pub fn patch_fe_big(fe_big: &Path) -> Result<bool> {
         "{}.orig",
         fe_big.file_name().unwrap_or_default().to_string_lossy()
     ));
-    // Already there (an earlier run): nothing to do.
+    // Skip only a current menu; older DISPLAY tabs must be rebuilt from .orig.
     {
         let (_, mem, _, _, d1) = read_member(fe_big)?;
-        if already_patched(&unrefpack(&mem[d1].1)?) {
+        let konst = unrefpack(&mem[d1].1)?;
+        if already_patched(&konst)
+            && ROWS.iter().flat_map(|(_, labels)| *labels).all(|label| {
+                konst.windows(label.len()).any(|w| w == label.as_bytes())
+            })
+        {
             return Ok(false);
         }
     }
