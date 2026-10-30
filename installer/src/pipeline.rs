@@ -325,6 +325,12 @@ pub fn sdk_commit(root: &Path) -> String {
 }
 
 fn jobs() -> u64 {
+    if let Ok(value) = std::env::var("FNC_BUILD_JOBS")
+        && let Ok(jobs) = value.parse::<u64>()
+        && jobs > 0
+    {
+        return jobs;
+    }
     let cpus = std::thread::available_parallelism()
         .map(|n| n.get() as u64)
         .unwrap_or(4);
@@ -715,7 +721,10 @@ fn host_rexglue(
         .arg(&host)
         .args(["--target", "rexglue", "-j", jobs]);
     run(r, c, "Building the recompiler", |l| progress_line(r, l)).context(LINUX_DEPS)?;
-    find_file(&host, "rexglue").context("The recompiler was built but not found")
+    // The SDK writes executables under its source tree, not its CMake build tree.
+    find_file(&sdk_src.join("out"), "rexglue")
+        .or_else(|| find_file(&host, "rexglue"))
+        .context("The recompiler was built but not found")
 }
 
 const LINUX_DEPS: &str = "Building programs for this PC needs the C++ standard library headers. Install them \
