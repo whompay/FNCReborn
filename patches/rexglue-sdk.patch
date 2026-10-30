@@ -1180,3 +1180,30 @@ index 32d427d..0f39122 100644
              }
              return result;
          }
+diff --git a/thirdparty/CMakeLists.txt b/thirdparty/CMakeLists.txt
+index f102b56..5e553eb 100644
+--- a/thirdparty/CMakeLists.txt
++++ b/thirdparty/CMakeLists.txt
+@@ -291,12 +291,12 @@
+-# Linux video and audio backends. Both video drivers are always built so the
+-# one in use stays a runtime choice.
++# Linux video and audio defaults. Explicit cache options may disable these
++# for console-only host tools such as the recompiler.
+ if(UNIX AND NOT APPLE)
+-    set(SDL_X11               ON  CACHE BOOL "" FORCE)
+-    set(SDL_WAYLAND           ON  CACHE BOOL "" FORCE)
+-    set(SDL_ALSA              ON  CACHE BOOL "" FORCE)
+-    set(SDL_ALSA_SHARED       ON  CACHE BOOL "" FORCE)
+-    set(SDL_PULSEAUDIO        ON  CACHE BOOL "" FORCE)
+-    set(SDL_PULSEAUDIO_SHARED ON  CACHE BOOL "" FORCE)
+-    set(SDL_PIPEWIRE          ON  CACHE BOOL "" FORCE)
+-    set(SDL_PIPEWIRE_SHARED   ON  CACHE BOOL "" FORCE)
++    set(SDL_X11               ON  CACHE BOOL "")
++    set(SDL_WAYLAND           ON  CACHE BOOL "")
++    set(SDL_ALSA              ON  CACHE BOOL "")
++    set(SDL_ALSA_SHARED       ON  CACHE BOOL "")
++    set(SDL_PULSEAUDIO        ON  CACHE BOOL "")
++    set(SDL_PULSEAUDIO_SHARED ON  CACHE BOOL "")
++    set(SDL_PIPEWIRE          ON  CACHE BOOL "")
++    set(SDL_PIPEWIRE_SHARED   ON  CACHE BOOL "")
+ endif()
