@@ -25,7 +25,7 @@ from refpack_enc import refpack
 CATEGORY = 200
 TAB_NAME = 'DISPLAY'
 ROWS = [  # (title, labels) -> setting ids 201, 202, ... ; must match kRows in fnc_settings_menu.cpp
-    ('FRAME RATE (RESTART)', ['30 FPS', '60 FPS', '120 FPS', '144 FPS']),
+    ('FRAME RATE (RESTART)', ['30 FPS', '60 FPS', '120 FPS', '144 FPS', '165 FPS', '180 FPS', '240 FPS']),
     ('VSYNC', ['OFF', 'ON']),
     ('RESOLUTION SCALE (RESTART)', ['1X', '2X', '3X']),
     ('ANTI-ALIASING', ['OFF', 'FXAA', 'FXAA EXTREME']),

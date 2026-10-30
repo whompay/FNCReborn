@@ -64,7 +64,7 @@ constexpr uint32_t kHolderSet = 0x82F9E0C4;
 
 struct Row {
   const char* cvar;
-  const char* values[5];  // cvar text per option index
+  const char* values[7];  // cvar text per option index
   int count;
   int def;                // default option index
   bool restart;
@@ -72,7 +72,7 @@ struct Row {
 
 // Order = setting ids 201, 202, ... (same order as the labels in the Apt patch).
 const Row kRows[] = {
-    {"fnc_frame_rate", {"30", "60", "120", "144"}, 4, 1, true},
+    {"fnc_frame_rate", {"30", "60", "120", "144", "165", "180", "240"}, 7, 1, true},
     {"vsync", {"false", "true"}, 2, 1, false},
     {"resolution_scale", {"1", "2", "3"}, 3, 0, true},
     {"swap_post_effect", {"none", "fxaa", "fxaa_extreme"}, 3, 0, false},

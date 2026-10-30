@@ -15,7 +15,7 @@ on your own PC, from your own disc.
 
 Playable. The menus, Fight Now, Legacy mode, Champion mode, Create a Fighter
 and saving and loading all work, with sound. The game runs at 60 FPS by default
-(30, 120 and 144 are one setting away) and has its own **DISPLAY** tab in the
+(30, 120, 144, 165, 180 and 240 are one setting away) and has its own **DISPLAY** tab in the
 Settings screen for frame rate, VSync, resolution scale, anti-aliasing and
 fullscreen. A camera behind your boxer is one button away (Back on the
 controller). Older CPUs are covered: the build adapts to the CPU of the PC it is
@@ -95,7 +95,7 @@ it). The useful ones:
 
 | Setting | Effect |
 |---|---|
-| `fnc_frame_rate` | Frame rate cap: `30` (original), `60` (default), `120` or `144` |
+| `fnc_frame_rate` | Frame rate cap: `30` (original), `60` (default), `120`, `144`, `165`, `180` or `240` |
 | `vsync` | `true` or `false` |
 | `resolution_scale` | Internal resolution: `1` (720p) or `2` (1440p) |
 | `fullscreen` | Start in fullscreen (`true`) or a window (`false`) |
